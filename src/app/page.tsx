@@ -1,65 +1,171 @@
-import Image from "next/image";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { getImageUrl } from "@/utils/imagePath";
 
-export default function Home() {
+export default function Inicio() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <Navbar />
+      <main className="pt-0">
+        {/* Hero Section */}
+        <section className="relative min-h-[700px] flex items-start pt-38 overflow-hidden" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("${getImageUrl('/images/HOME_web/Home_Portada-1280.jpg')}")`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+          <div className="absolute inset-0 technical-grid pointer-events-none" />
+          <div className="max-w-screen-2xl mx-auto px-8 w-full gap-12 items-center">
+            <div className="z-10 text-white flex flex-col justify-center">
+              <img alt="Ergohome" className="w-full md:w-1/2 lg:w-1/3 mb-10" data-alt="Ergohome" src={getImageUrl("/images/HOME_web/Ergohome_Logo_Amarillo_Blanco-640.png")} />
+              <p className="text-white/90 text-xl max-w-2xl mb-10 leading-relaxed">
+                Transformamos tu hogar a través de la ergonomía
+              </p>
+
+              {/*
+
+              <span className="font-label text-primary font-bold tracking-widest uppercase text-xs mb-4 block mt-4">Residential Ergonomics</span>
+              <h1 className="font-headline text-5xl md:text-8xl font-extrabold tracking-tighter leading-[1.05] mb-8">
+                Diseñamos tu cocina con <br /><span className="text-primary drop-shadow-lg">alta calidad</span> y ergonomía
+              </h1>
+              <p className="text-white/90 text-xl max-w-2xl mb-10 leading-relaxed">
+                Transformamos el corazón de tu hogar en un santuario técnico donde la precisión arquitectónica se encuentra con el confort absoluto.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <button className="bg-primary text-background-dark px-10 py-5 rounded-full font-headline font-bold flex items-center gap-3 transition-transform hover:scale-105 shadow-xl">
+                  Ver Proyectos
+                  <span className="material-symbols-outlined">arrow_forward</span>
+                </button>
+                <button className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-full font-headline font-bold hover:bg-white/20 transition-all">
+                  Nuestra Metodología
+                </button>
+              </div>
+                */}
+            </div>
+          </div>
+        </section>
+        {/* Quick Links / Services */}
+        <section className="py-24 bg-surface px-8">
+          <div className="max-w-screen-2xl mx-auto">
+            <div className="flex justify-between items-end mb-16">
+              <div>
+                <h2 className="font-headline text-4xl font-bold tracking-tight mb-4">Nuestras Especialidades</h2>
+                <div className="h-1 w-20 bg-primary" />
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              {/* Diseño de Cocinas */}
+              <a href="/proyectos" className="group block bg-surface-container-low p-2 rounded-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                <div className="relative aspect-video rounded-lg overflow-hidden mb-6">
+                  <img alt="Diseño de Cocinas" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Diseñamos tu cocina con alta calidad y ergonomía." src={getImageUrl("/images/HOME_web/Proyectos_Cocinas_Portada-640.jpg")} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-on-surface/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+                <div className="px-6 pb-6">
+                  <h3 className="font-headline text-xl font-bold mb-3">Proyectos de Cocinas</h3>
+                  <p className="text-secondary text-sm mb-6 leading-relaxed">Diseñamos tu cocina con alta calidad y ergonomía.</p>
+                  <span className="inline-flex items-center font-label text-xs font-bold uppercase tracking-widest text-primary group-hover:gap-2 transition-all gap-1">
+                    Explorar <span className="material-symbols-outlined text-sm">trending_flat</span>
+                  </span>
+                </div>
+              </a>
+              {/* Remodelaciones */}
+              <a href="/proyectos/#remodelaciones" className="group block bg-surface-container-low p-2 rounded-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                <div className="relative aspect-video rounded-lg overflow-hidden mb-6">
+                  <img alt="Remodelaciones" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Realizamos desde el proyecto centrado en tus necesidades, hasta la construcción." src={getImageUrl("/images/HOME_web/Proyectos_Remodelaciones_Portada-640.jpg")} />
+                </div>
+                <div className="px-6 pb-6">
+                  <h3 className="font-headline text-xl font-bold mb-3">Remodelaciones</h3>
+                  <p className="text-secondary text-sm mb-6 leading-relaxed">Realizamos desde el proyecto centrado en tus necesidades, hasta la construcción.</p>
+                  <span className="inline-flex items-center font-label text-xs font-bold uppercase tracking-widest text-primary group-hover:gap-2 transition-all gap-1">
+                    Explorar <span className="material-symbols-outlined text-sm">trending_flat</span>
+                  </span>
+                </div>
+              </a>
+              {/* Equipamiento */}
+              <a href="/proyectos/#equipamiento" className="group block bg-surface-container-low p-2 rounded-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                <div className="relative aspect-video rounded-lg overflow-hidden mb-6">
+                  <img alt="Equipamiento" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Mobiliario ergonómico centrado en el habitar de los entornos." src={getImageUrl("/images/HOME_web/Proyectos_Equipamiento_Portada-640.jpg")} />
+                </div>
+                <div className="px-6 pb-6">
+                  <h3 className="font-headline text-xl font-bold mb-3">Equipamiento</h3>
+                  <p className="text-secondary text-sm mb-6 leading-relaxed">Mobiliario ergonómico centrado en el habitar de los entornos.</p>
+                  <span className="inline-flex items-center font-label text-xs font-bold uppercase tracking-widest text-primary group-hover:gap-2 transition-all gap-1">
+                    Explorar <span className="material-symbols-outlined text-sm">trending_flat</span>
+                  </span>
+                </div>
+              </a>
+              {/* Ergología */}
+              <a href="/ergologia" className="group block bg-primary p-2 rounded-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-2 relative overflow-hidden text-background-dark">
+                <div className="relative aspect-video rounded-lg overflow-hidden mb-6">
+                  <img alt="Equipamiento" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Línea de muebles modulares diseñada bajo parámetros ergonómicos." src={getImageUrl("/images/HOME_web/Proyectos_Ergologia_Portada.jpg")} />
+                </div>
+                <div className="px-6 pb-6 relative z-10">
+                  <h3 className="font-headline text-xl font-bold mb-3 text-background-dark">Ergo-logía</h3>
+                  <p className="text-sm mb-6 leading-relaxed text-background-dark/80">Línea de muebles modulares diseñada bajo parámetros ergonómicos.</p>
+                  <span className="inline-flex items-center font-label text-xs font-bold uppercase tracking-widest text-background-dark group-hover:gap-2 transition-all gap-1">
+                    Explorar <span className="material-symbols-outlined text-sm">trending_flat</span>
+                  </span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+        {/* Technical Sanctuary (Asymmetric Layout) */}
+        <section className="py-24 bg-surface-container-low overflow-hidden">
+          <div className="max-w-screen-2xl mx-auto px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+              <div className="relative">
+                {/* High Contrast Editorial Pairing */}
+                <div className="mb-12">
+                  {/*<h4 className="font-label text-xs uppercase tracking-[0.4em] text-primary font-bold mb-4">The Technical Sanctuary</h4>*/}
+                  <h2 className="font-headline text-5xl font-extrabold tracking-tight leading-none mb-8">Enfoque <br /> <span className="text-outline">Ergohome</span></h2>
+                </div>
+                <div className="space-y-8">
+                  <div className="flex gap-6 items-start">
+                    <div className="bg-surface-container-lowest p-3 rounded-full shadow-sm shrink-0">
+                      <span className="material-symbols-outlined text-primary">conditions</span>
+                    </div>
+                    <div>
+                      <h5 className="font-headline font-bold mb-2">Sostenibilidad Humana</h5>
+                      <p className="text-secondary text-sm">Entendida como la capacidad de diseñar y gestionar sistemas sociales y tecnológicos que respeten y se adapten a las necesidades, capacidades y límites del ser humano, promoviendo su bienestar físico, mental y social en distintos entornos y etapas de la vida.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-6 items-start">
+                    <div className="bg-surface-container-lowest p-3 rounded-full shadow-sm shrink-0">
+                      <span className="material-symbols-outlined text-primary">light_mode</span>
+                    </div>
+                    <div>
+                      <h5 className="font-headline font-bold mb-2">Iluminación de Escenario</h5>
+                      <p className="text-secondary text-sm">Sistemas de luz LED indirecta integrados que eliminan sombras en las áreas críticas de preparación.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="relative grid grid-cols-2 gap-4">
+                <div className="space-y-4">
+                  <div className="rounded-xl overflow-hidden aspect-[3/4] shadow-lg">
+                    <img alt="Ergonomic storage solutions" className="w-full h-full object-cover" data-alt="Interior view of a perfectly organized ergonomic kitchen drawer" src={getImageUrl("https://lh3.googleusercontent.com/aida-public/AB6AXuB5WkFPAGCBerzP5nTm81dHskYaCH8Y_c56nJOmzYoSxwA7pDWpdLs_t6wFrqVBIjnpgNVXCM_v16eQbf87fG5Eaipn45uUWGetlzCpZLxREha_q4HbG8Ot4y_JhbpqOFYPlCLx3k3eMl0GVgPOliPu6WXDpK8xhNaSPeNcxJ-qgVHAOXH9YY2gZsG7eGT99h44UoIjZaElvtb25IWgaXgvFfvmweKd9OPqo55TzU1xBqdhNL-oBv4zliDRY5deLLaTnXRaLsYp7mE")} />
+                  </div>
+                  <div className="bg-primary-container p-6 rounded-xl aspect-square flex flex-col justify-end">
+                    <span className="font-label text-4xl font-bold text-on-primary-container mb-2">98%</span>
+                    <p className="text-on-primary-container text-xs font-bold leading-tight">Optimización del flujo de movimiento garantizada.</p>
+                  </div>
+                </div>
+                <div className="pt-12 space-y-4">
+                  <div className="bg-surface-container-highest rounded-xl aspect-square relative overflow-hidden group">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="material-symbols-outlined text-8xl text-outline-variant/30">architecture</span>
+                    </div>
+                    <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                      <h6 className="font-headline font-bold text-sm">Blueprint Core</h6>
+                      <p className="text-[10px] text-secondary">Modular drawing system v2.4</p>
+                    </div>
+                  </div>
+                  <div className="rounded-xl overflow-hidden aspect-[3/4] shadow-lg">
+                    <img alt="Technical modern kitchen" className="w-full h-full object-cover" data-alt="Wideshot of a sleek minimalist kitchen with island" src={getImageUrl("https://lh3.googleusercontent.com/aida-public/AB6AXuAcS77g4inYl-TJ9ya8AoJqjt5qL_o1IUDYzbHobT1CYtyqakE7Xj8bUrvOB0XnPymB7utoLXOfLDfXXuUo83idb_e7PlTiIK4m0Qi_Dcs8wPvjeFbu-7uPqlTRfL7I1cJq-8YEOpUzQ6-qCvj3dJjngvN3mFjrPAVeO088R_GDUJuCqCWQ-fUChDf_oCsyC026aXHl7GUE6O8R72RBSI8ubcE5ZL7rp6oau9rC2vfn7GOuxMdTqbVZCsq9QJfcZcYzV824z0UyEN4")} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
-    </div>
+      <Footer />
+    </>
   );
 }
