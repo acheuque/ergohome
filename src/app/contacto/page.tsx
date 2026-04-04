@@ -174,23 +174,6 @@ export default function Contacto() {
             </form>
           </div>
         </div>
-        {/* Technical Annotation In-set */}
-        <div className="mt-20 border-t border-outline-variant/20 pt-12 flex flex-col md:flex-row gap-8 items-center justify-between">
-          <div className="flex items-center gap-4">
-            <span className="w-12 h-[1px] bg-primary" />
-            <p className="font-label text-sm uppercase tracking-tighter text-on-surface-variant">Metodología Ergología™ Certificada</p>
-          </div>
-          <div className="flex gap-4">
-            <div className="bg-secondary-container/50 px-4 py-2 rounded-full flex items-center gap-2">
-              <span className="material-symbols-outlined text-[16px]">verified_user</span>
-              <span className="font-label text-[11px] font-bold">Datos Protegidos</span>
-            </div>
-            <div className="bg-secondary-container/50 px-4 py-2 rounded-full flex items-center gap-2">
-              <span className="material-symbols-outlined text-[16px]">speed</span>
-              <span className="font-label text-[11px] font-bold">Respuesta &lt; 24h</span>
-            </div>
-          </div>
-        </div>
       </main>
       <Footer />
     </>

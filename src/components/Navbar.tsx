@@ -31,7 +31,7 @@ export default function Navbar() {
               <img
                 src={getImageUrl("/images/HOME_web/Ergohome_Logo_Negro_Limpio-500.png")}
                 alt="Ergohome Logo"
-                className="h-10 md:h-12 w-auto object-contain"
+                className="h-10 md:h-12 w-auto object-contain dark:invert"
               />
             </Link>
           </div>

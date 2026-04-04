@@ -22,7 +22,10 @@ export const metadata: Metadata = {
   title: "Ergohome | Ergonomía + Diseño",
   description: "Transformamos tu hogar a través de la ergonomía",
   icons: {
-    icon: getImageUrl("/HOME_web/Ergohome_Logo_Negro_Limpio-500.png"),
+    icon: [
+      { url: getImageUrl("/images/HOME_web/Ergohome_Logo_Negro_Limpio-500.png"), media: '(prefers-color-scheme: light)' },
+      { url: getImageUrl("/images/HOME_web/Ergohome_Logo_Blanco_Limpio-500.png"), media: '(prefers-color-scheme: dark)' },
+    ],
   },
 };
 

@@ -1,4 +1,6 @@
 <?php
+require 'config.php';
+
 // /public/send-email.php
 // Script de procesamiento del Formulario de Contacto para Hostinger (Plain PHP)
 
@@ -49,30 +51,55 @@ if (empty($recaptchaToken)) {
     exit;
 }
 
-// 5. Validación de reCAPTCHA
-// NOTA: Para Hostinger, puedes establecer RECAPTCHA_SECRET_KEY en las variables de entorno o bien usar putenv() en un archivo seguro no expuesto.
-$recaptchaSecret = getenv('EROGOWORK_RECAPTCHA_SECRET_KEY');
+// 5. Validación de reCAPTCHA Enterprise
+// Para la versión Enterprise, el secret de backend en realidad es una "API Key" general de Google Cloud Platform (GCP).
+$gcpApiKey = $EROGOWORK_RECAPTCHA_SECRET_KEY;
 
-if (!$recaptchaSecret) {
-    // Si no logras poner variables de entorno en tu panel Hostinger, usa la siguiente línea solo sustituyendo tu SECRET KEY privado, y quita el `getenv` anterior. 
-    // $recaptchaSecret = "TU_SECRET_KEY"; 
+if (!$gcpApiKey) {
     http_response_code(500);
     echo json_encode(["success" => false, "message" => "Error del servidor: Variable de clave secreta no configurada."]);
     exit;
 }
 
-// Hacer la petición a Google usando la llave Legacy SiteVerify que es compatible con Enterprise (devuelve score básico)
-$verifyResponse = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . urlencode($recaptchaSecret) . "&response=" . urlencode($recaptchaToken));
+$projectId = "ergoworks";
+$siteKey = "6LdUoaUsAAAAACta8oXLlYocvXcZw_rp41Q5jSbs"; // Tu llave pública
+
+// Crear Petición POST a la API REST de Enterprise
+$url = "https://recaptchaenterprise.googleapis.com/v1/projects/" . urlencode($projectId) . "/assessments?key=" . urlencode($gcpApiKey);
+$postData = json_encode([
+    'event' => [
+        'token' => $recaptchaToken,
+        'siteKey' => $siteKey,
+        'expectedAction' => 'LOGIN'
+    ]
+]);
+
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+
+$referrer = $EROGOWORK_DOMAIN_REFERRER;
+// Enviamos el Referer manualmente para que pase tu restricción en Google Cloud
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Content-Type: application/json',
+    'Referer: ' . $referrer
+]);
+$verifyResponse = curl_exec($ch);
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+curl_close($ch);
+
 $responseData = json_decode($verifyResponse);
 
-if (!$responseData->success) {
+// Revisar si Google devolvió que el token NO es válido
+if ($httpCode !== 200 || !isset($responseData->tokenProperties->valid) || $responseData->tokenProperties->valid !== true) {
     http_response_code(403);
     echo json_encode(["success" => false, "message" => "Verificación de reCAPTCHA fallida. Por favor, intenta de nuevo.", "details" => $responseData]);
     exit;
 }
 
-// IMPORTANTE: Un Score debajo de 0.5 es usualmente un bot para v3/Enterprise.
-$score = isset($responseData->score) ? $responseData->score : 1.0;
+// IMPORTANTE: En Enterprise, el score está dentro de riskAnalysis
+$score = isset($responseData->riskAnalysis->score) ? $responseData->riskAnalysis->score : 1.0;
 if ($score < 0.5) {
     http_response_code(403);
     echo json_encode(["success" => false, "message" => "Tu solicitud fue marcada como sospechosa de spam por nuestros sistemas."]);
@@ -80,7 +107,7 @@ if ($score < 0.5) {
 }
 
 // 6. Preparar el Email 
-$toEmail = getenv('EROGOWORK_TO_EMAIL'); // <-- CAMBIAR POR EL CORREO DONDE QUIERES RECIBIR ESTO
+$toEmail = $EROGOWORK_TO_EMAIL; // <-- CAMBIAR POR EL CORREO DONDE QUIERES RECIBIR ESTO
 $emailSubject = "NUEVO CONTACTO WEB: $subject";
 
 $emailBody = "Has recibido una nueva solicitud desde la página web de Ergohome:\n\n";
