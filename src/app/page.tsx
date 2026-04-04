@@ -13,8 +13,8 @@ export default function Inicio() {
           <div className="max-w-screen-2xl mx-auto px-8 w-full gap-12 items-center">
             <div className="z-10 text-white flex flex-col justify-center">
               <img alt="Ergohome" className="w-full md:w-1/2 lg:w-1/3 mb-10" data-alt="Ergohome" src={getImageUrl("/images/HOME_web/Ergohome_Logo_Amarillo_Blanco-640.png")} />
-              <p className="text-white/90 text-xl max-w-2xl mb-10 leading-relaxed">
-                Transformamos tu hogar a través de la ergonomía
+              <p className="text-white/90 pl-12 pt-35 text-xl max-w-2xl mb-10 leading-relaxed">
+                Tu familia merece un hogar que se adapte a sus necesidades, creamos espacios ergonómicos y funcionales que facilitan las tareas cotidianas.
               </p>
 
               {/*
@@ -118,7 +118,7 @@ export default function Inicio() {
                 <div className="space-y-8">
                   <div className="flex gap-6 items-start">
                     <div className="bg-surface-container-lowest p-3 rounded-full shadow-sm shrink-0">
-                      <span className="material-symbols-outlined text-primary">conditions</span>
+                      <span className="material-symbols-outlined text-primary pt-1">conditions</span>
                     </div>
                     <div>
                       <h5 className="font-headline font-bold mb-2">Sostenibilidad Humana</h5>
@@ -127,11 +127,11 @@ export default function Inicio() {
                   </div>
                   <div className="flex gap-6 items-start">
                     <div className="bg-surface-container-lowest p-3 rounded-full shadow-sm shrink-0">
-                      <span className="material-symbols-outlined text-primary">light_mode</span>
+                      <span className="material-symbols-outlined text-primary pt-1">center_focus_strong</span>
                     </div>
                     <div>
-                      <h5 className="font-headline font-bold mb-2">Iluminación de Escenario</h5>
-                      <p className="text-secondary text-sm">Sistemas de luz LED indirecta integrados que eliminan sombras en las áreas críticas de preparación.</p>
+                      <h5 className="font-headline font-bold mb-2x">Diseño Centrado en las Personas</h5>
+                      <p className="text-secondary text-sm">Un hogar debe ser funcional y bello para todos, aplicamos metodologías centradas en las personas para crear ambientes que hagan la diferencia.</p>
                     </div>
                   </div>
                 </div>
@@ -139,11 +139,11 @@ export default function Inicio() {
               <div className="relative grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <div className="rounded-xl overflow-hidden aspect-[3/4] shadow-lg">
-                    <img alt="Ergonomic storage solutions" className="w-full h-full object-cover" data-alt="Interior view of a perfectly organized ergonomic kitchen drawer" src={getImageUrl("https://lh3.googleusercontent.com/aida-public/AB6AXuB5WkFPAGCBerzP5nTm81dHskYaCH8Y_c56nJOmzYoSxwA7pDWpdLs_t6wFrqVBIjnpgNVXCM_v16eQbf87fG5Eaipn45uUWGetlzCpZLxREha_q4HbG8Ot4y_JhbpqOFYPlCLx3k3eMl0GVgPOliPu6WXDpK8xhNaSPeNcxJ-qgVHAOXH9YY2gZsG7eGT99h44UoIjZaElvtb25IWgaXgvFfvmweKd9OPqo55TzU1xBqdhNL-oBv4zliDRY5deLLaTnXRaLsYp7mE")} />
+                    <img alt="Ergonomic storage solutions" className="w-full h-full object-cover" style={{ objectPosition: '-50px center' }} data-alt="Ergo-logía" src={getImageUrl("/images/HOME_web/Proyectos_Ergologia_Portada.jpg")} />
                   </div>
                   <div className="bg-primary-container p-6 rounded-xl aspect-square flex flex-col justify-end">
-                    <span className="font-label text-4xl font-bold text-on-primary-container mb-2">98%</span>
-                    <p className="text-on-primary-container text-xs font-bold leading-tight">Optimización del flujo de movimiento garantizada.</p>
+                    <span className="font-label text-2xl font-bold text-on-primary-container mb-2">Diseño funcional, vida familiar plena</span>
+                    {/*<p className="text-on-primary-container text-xs font-bold leading-tight">Diseño funcional, vida familiar plena.</p>*/}
                   </div>
                 </div>
                 <div className="pt-12 space-y-4">
@@ -152,12 +152,12 @@ export default function Inicio() {
                       <span className="material-symbols-outlined text-8xl text-outline-variant/30">architecture</span>
                     </div>
                     <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                      <h6 className="font-headline font-bold text-sm">Blueprint Core</h6>
-                      <p className="text-[10px] text-secondary">Modular drawing system v2.4</p>
+                      <h6 className="font-label text-2xl font-bold text-secondary mb-2">Innovación habitacional centrada en las personas</h6>
+                      {/*<p className="text-[10px] text-secondary">Innovación habitacional centrada en las personas.</p>*/}
                     </div>
                   </div>
                   <div className="rounded-xl overflow-hidden aspect-[3/4] shadow-lg">
-                    <img alt="Technical modern kitchen" className="w-full h-full object-cover" data-alt="Wideshot of a sleek minimalist kitchen with island" src={getImageUrl("https://lh3.googleusercontent.com/aida-public/AB6AXuAcS77g4inYl-TJ9ya8AoJqjt5qL_o1IUDYzbHobT1CYtyqakE7Xj8bUrvOB0XnPymB7utoLXOfLDfXXuUo83idb_e7PlTiIK4m0Qi_Dcs8wPvjeFbu-7uPqlTRfL7I1cJq-8YEOpUzQ6-qCvj3dJjngvN3mFjrPAVeO088R_GDUJuCqCWQ-fUChDf_oCsyC026aXHl7GUE6O8R72RBSI8ubcE5ZL7rp6oau9rC2vfn7GOuxMdTqbVZCsq9QJfcZcYzV824z0UyEN4")} />
+                    <img alt="Technical modern kitchen" className="w-full h-full object-cover" style={{ objectPosition: '-130px center' }} src={getImageUrl("/images/PROYECTOS_web/COCINAS/Proyectos_Cocinas_SuperficiedeTrabajo_01-640.jpg")} />
                   </div>
                 </div>
               </div>

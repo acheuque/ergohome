@@ -9,7 +9,7 @@ export function getImageUrl(path: string): string {
   // Grab the image host from environment variables.
   // This will be http://localhost:3000 locally, and your live domain in production
   const host = process.env.NEXT_PUBLIC_IMAGE_HOST || '';
-  
+
   if (!path) return '';
 
   // If the path is already an absolute URL (starts with http/https), just return it
@@ -19,9 +19,9 @@ export function getImageUrl(path: string): string {
 
   // Ensure we don't end up with formatting issues with the slash separating host and path
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
-  
+
   // Clean up trailing slash on host if present
   const cleanHost = host.endsWith('/') ? host.slice(0, -1) : host;
-  
+
   return `${cleanHost}${cleanPath}`;
 }

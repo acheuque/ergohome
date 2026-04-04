@@ -1,10 +1,98 @@
+"use client";
+
+import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getImageUrl } from "@/utils/imagePath";
+import { useState } from "react";
 
 export default function Contacto() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [responseMessage, setResponseMessage] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("loading");
+    setResponseMessage("");
+
+    // Validaciones Frontend Explícitas
+    if (!formData.name.trim()) {
+      setStatus("error");
+      setResponseMessage("Por favor, ingresa tu nombre completo.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setStatus("error");
+      setResponseMessage("Por favor, ingresa un correo válido.");
+      return;
+    }
+
+    if (formData.message.trim().length === 0 || formData.message.length > 1500) {
+      setStatus("error");
+      setResponseMessage("El mensaje es requerido y no debe superar los 1500 caracteres.");
+      return;
+    }
+
+    if (typeof window !== 'undefined' && (window as any).grecaptcha) {
+      (window as any).grecaptcha.enterprise.ready(async () => {
+        try {
+          const token = await (window as any).grecaptcha.enterprise.execute('6LdUoaUsAAAAACta8oXLlYocvXcZw_rp41Q5jSbs', { action: 'LOGIN' });
+
+          // Enviar los datos al script PHP
+          const payload = {
+            ...formData,
+            token
+          };
+
+          const res = await fetch("/send-email.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          });
+
+          const data = await res.json();
+
+          if (res.ok) {
+            setStatus("success");
+            setResponseMessage(data.message || "Tu mensaje ha sido enviado exitosamente.");
+            setFormData({ name: "", email: "", subject: "", message: "" });
+          } else {
+            setStatus("error");
+            setResponseMessage(data.message || "Ocurrió un error al intentar enviar tu mensaje.");
+          }
+
+        } catch (error) {
+          console.error("Error validando la petición con reCAPTCHA o backend:", error);
+          setStatus("error");
+          setResponseMessage("Error inesperado en nuestra validación de seguridad. Refresque la página.");
+        }
+      });
+    } else {
+      setStatus("error");
+      setResponseMessage("Google reCAPTCHA no pudo cargar correctamente, verifica tu conexión.");
+    }
+  };
+
   return (
     <>
+      <Script src="https://www.google.com/recaptcha/enterprise.js?render=6LdUoaUsAAAAACta8oXLlYocvXcZw_rp41Q5jSbs" strategy="afterInteractive" />
       <Navbar />
       <main className="flex-grow pt-32 pb-20 px-6 max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -26,17 +114,6 @@ export default function Contacto() {
                 <div>
                   <h3 className="font-headline text-xl font-bold">Maria Consuelo Zamora Paredes</h3>
                   <p className="font-label text-sm text-primary mb-2">CEO y Socia Fundadora</p>
-                  {/*<div className="flex flex-col gap-1 text-sm text-on-surface-variant">
-                    <span className="flex items-center gap-2">
-                      <span className="material-symbols-outlined text-sm">mail</span>
-                      [Correo por definir]
-                    </span>
-                    <span className="flex items-center gap-2">
-                      <span className="material-symbols-outlined text-sm">call</span>
-                      [Teléfono por definir]
-                    </span>
-                  </div>
-                  */}
                 </div>
               </div>
               {/* Aesthetic Detail */}
@@ -56,39 +133,42 @@ export default function Contacto() {
           </div>
           {/* Form Column */}
           <div className="lg:col-span-7 bg-surface-container-lowest p-8 md:p-12 rounded-xl shadow-[0px_20px_40px_rgba(26,28,28,0.06)]">
-            <form className="space-y-8">
+            <form className="space-y-8" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
                   <label className="font-label text-xs uppercase tracking-widest text-on-surface-variant/80 font-bold px-1" htmlFor="name">Nombre Completo</label>
-                  <input className="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 transition-all px-4 py-4 text-on-surface placeholder-on-surface-variant/30 rounded-t-lg" id="name" placeholder="Ej: Julian Ergo" type="text" />
+                  <input required value={formData.name} onChange={handleChange} className="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 transition-all px-4 py-4 text-on-surface placeholder-on-surface-variant/30 rounded-t-lg" id="name" placeholder="Ej: Julian Ergo" type="text" />
                 </div>
                 <div className="space-y-2">
                   <label className="font-label text-xs uppercase tracking-widest text-on-surface-variant/80 font-bold px-1" htmlFor="email">Email Corporativo</label>
-                  <input className="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 transition-all px-4 py-4 text-on-surface placeholder-on-surface-variant/30 rounded-t-lg" id="email" placeholder="julian@empresa.com" type="email" />
+                  <input required value={formData.email} onChange={handleChange} className="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 transition-all px-4 py-4 text-on-surface placeholder-on-surface-variant/30 rounded-t-lg" id="email" placeholder="julian@empresa.com" type="email" />
                 </div>
               </div>
               <div className="space-y-2">
                 <label className="font-label text-xs uppercase tracking-widest text-on-surface-variant/80 font-bold px-1" htmlFor="subject">Asunto</label>
-                <input className="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 transition-all px-4 py-4 text-on-surface placeholder-on-surface-variant/30 rounded-t-lg" id="subject" placeholder="¿Cómo podemos ayudarle?" type="text" />
+                <input required value={formData.subject} onChange={handleChange} className="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 transition-all px-4 py-4 text-on-surface placeholder-on-surface-variant/30 rounded-t-lg" id="subject" placeholder="¿Cómo podemos ayudarle?" type="text" />
               </div>
-              <div className="space-y-2">
-                <label className="font-label text-xs uppercase tracking-widest text-on-surface-variant/80 font-bold px-1" htmlFor="message">Mensaje</label>
-                <textarea className="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 transition-all px-4 py-4 text-on-surface placeholder-on-surface-variant/30 rounded-t-lg resize-none" id="message" placeholder="Describa su proyecto o necesidad técnica..." rows={4} defaultValue={""} />
+              <div className="space-y-2 relative">
+                <label className="flex items-center justify-between font-label text-xs uppercase tracking-widest text-on-surface-variant/80 font-bold px-1" htmlFor="message">
+                  <span>Mensaje</span>
+                  <span className={`lowercase tracking-normal font-normal ${formData.message.length > 1490 ? 'text-red-500' : 'text-zinc-500'}`}>{formData.message.length}/1500</span>
+                </label>
+                <textarea required maxLength={1500} value={formData.message} onChange={handleChange} className="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 transition-all px-4 py-4 text-on-surface placeholder-on-surface-variant/30 rounded-t-lg resize-none" id="message" placeholder="Describa su proyecto o necesidad técnica..." rows={4} />
               </div>
-              <div className="pt-4">
-                <div className="bg-surface-container-high/50 p-4 rounded-lg flex items-center justify-between border border-outline-variant/10 mb-8">
-                  <div className="flex items-center gap-4">
-                    <div className="w-6 h-6 border-2 border-outline-variant/40 rounded flex items-center justify-center bg-white" />
-                    <span className="text-sm font-medium text-on-surface-variant">No soy un robot</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <img alt="reCAPTCHA" className="w-8 opacity-40" data-alt="Official reCAPTCHA security logo" src={getImageUrl("https://lh3.googleusercontent.com/aida-public/AB6AXuBZabNd9MtTeQA0cfuhumML3P06rouRyU1L3W8lGqzrf3R-76aS9mUiKxG7J5yNtgMI9cGwr01yPfPaqXthgvudh7-zRRgn6u06SYz5kxh3dVrIl-HBxRwrDpZuhH2zGW2Vsk-eThd60_Mjg0ggL1XCrIeljCFuvtIAbOp9SHYLD0sPvz68Dgtkj1bx44YZ0ynqqkhJmnsOPfx7CC962R26yWDgH2oOZDpaWNkT2Y8OzesV9MO5uCuuaheXP9n7ITKnIywDoGiKAb8")} />
-                    <span className="text-[10px] text-zinc-400">reCAPTCHA</span>
-                  </div>
+
+              {responseMessage && (
+                <div className={`p-4 rounded-xl text-sm font-body ${status === 'success' ? 'bg-tertiary-container text-on-tertiary-container' : 'bg-error-container text-on-error-container'}`}>
+                  {responseMessage}
                 </div>
-                <button className="w-full bg-[#EFC820] text-zinc-900 font-headline font-bold py-5 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-3" type="submit">
-                  Enviar Solicitud
-                  <span className="material-symbols-outlined">send</span>
+              )}
+
+              <div className="pt-4">
+                <p className="text-[10px] text-zinc-400 mb-6 text-center max-w-sm mx-auto">
+                  Este sitio está protegido por reCAPTCHA Enterprise y aplican su <a href="https://policies.google.com/privacy" className="underline" rel="noreferrer" target="_blank">Política de Privacidad</a> y <a href="https://policies.google.com/terms" className="underline" rel="noreferrer" target="_blank">Términos de Servicio</a>.
+                </p>
+                <button disabled={status === "loading"} className="w-full bg-[#EFC820] text-zinc-900 font-headline font-bold py-5 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:scale-100 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-3" type="submit">
+                  {status === "loading" ? "Procesando..." : "Enviar Solicitud"}
+                  <span className="material-symbols-outlined">{status === "loading" ? "hourglass_empty" : "send"}</span>
                 </button>
               </div>
             </form>

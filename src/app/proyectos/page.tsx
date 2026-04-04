@@ -266,7 +266,7 @@ const equipamientoProjects: Project[] = [
     aspect: 'aspect-[4/5]'
   },
   {
-    name: 'CAJONERA',
+    name: 'RACK',
     description: '',
     mainImage: '/images/PROYECTOS_web/EQUIPAMIENTO/Proyectos_Equipamiento_Librero_03.jpg',
     carouselImages: [
@@ -306,19 +306,45 @@ export default function Proyectos() {
         <header className="px-8 max-w-screen-2xl mx-auto mb-20">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div className="max-w-3xl">
-              <span className="font-label text-primary font-bold tracking-widest text-xs uppercase mb-4 block">Portafolio Residencial</span>
+              <span className="font-label text-primary font-bold tracking-widest text-xs uppercase mb-4 block">Portafolio</span>
               <h1 className="text-5xl md:text-7xl font-headline font-extrabold tracking-tighter text-on-background leading-[0.9]">
-                Espacios que <br /> <span className="text-outline">Respiran Precisión</span>
+                Nuestras <br /> <span className="text-outline">Espcialidades</span>
               </h1>
             </div>
             <p className="font-body text-lg text-secondary max-w-md leading-relaxed">
-              Diseño técnico y estético fusionados para transformar el núcleo de la vida moderna. Proyectos curados bajo la filosofía de ergonomía residencial.
+              Diseñamos experiencias que ponen a las personas en el centro y generan soluciones prácticas, estéticas y duraderas.
             </p>
           </div>
         </header>
 
+        {/* Navigation Pills */}
+        <section className="px-8 max-w-screen-2xl mx-auto mb-20 -mt-8" >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <a href="#cocinas" className="group bg-surface-container-low p-6 rounded-xl hover:bg-primary-container hover:text-on-primary-container transition-all flex flex-col justify-center shadow-sm hover:shadow-md border border-transparent hover:border-primary/20">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="font-headline text-lg font-bold">Proyectos de Cocinas</h3>
+                <span className="material-symbols-outlined text-primary group-hover:text-on-primary-container transition-colors">arrow_downward</span>
+              </div>
+              <p className="text-sm text-secondary group-hover:text-on-primary-container/80 leading-relaxed font-body">Diseñamos tu cocina con alta calidad y ergonomía.</p>
+            </a>
+            <a href="#remodelaciones" className="group bg-surface-container-low p-6 rounded-xl hover:bg-primary-container hover:text-on-primary-container transition-all flex flex-col justify-center shadow-sm hover:shadow-md border border-transparent hover:border-primary/20">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="font-headline text-lg font-bold">Remodelaciones</h3>
+                <span className="material-symbols-outlined text-primary group-hover:text-on-primary-container transition-colors">arrow_downward</span>
+              </div>
+              <p className="text-sm text-secondary group-hover:text-on-primary-container/80 leading-relaxed font-body">Realizamos desde el proyecto centrado en tus necesidades, hasta la construcción.</p>
+            </a>
+            <a href="#equipamiento" className="group bg-surface-container-low p-6 rounded-xl hover:bg-primary-container hover:text-on-primary-container transition-all flex flex-col justify-center shadow-sm hover:shadow-md border border-transparent hover:border-primary/20">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="font-headline text-lg font-bold">Equipamiento</h3>
+                <span className="material-symbols-outlined text-primary group-hover:text-on-primary-container transition-colors">arrow_downward</span>
+              </div>
+              <p className="text-sm text-secondary group-hover:text-on-primary-container/80 leading-relaxed font-body">Mobiliario ergonómico centrado en el habitar de los entornos.</p>
+            </a>
+          </div>
+        </section>
         {/* Category: Cocinas */}
-        <section className="mb-32">
+        <section className="mb-32" id="cocinas">
           <div className="px-8 max-w-screen-2xl mx-auto mb-12 flex items-center gap-4">
             <h2 className="font-headline text-3xl font-bold tracking-tight">Cocinas</h2>
             <div className="h-[1px] flex-grow bg-outline-variant opacity-30" />
