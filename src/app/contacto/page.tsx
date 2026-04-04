@@ -137,23 +137,23 @@ export default function Contacto() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
                   <label className="font-label text-xs uppercase tracking-widest text-on-surface-variant/80 font-bold px-1" htmlFor="name">Nombre Completo</label>
-                  <input required value={formData.name} onChange={handleChange} className="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 transition-all px-4 py-4 text-on-surface placeholder-on-surface-variant/30 rounded-t-lg" id="name" placeholder="Ej: Julian Ergo" type="text" />
+                  <input suppressHydrationWarning required value={formData.name} onChange={handleChange} className="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 transition-all px-4 py-4 text-on-surface placeholder-on-surface-variant/30 rounded-t-lg" id="name" placeholder="Ej: Julian Ergo" type="text" />
                 </div>
                 <div className="space-y-2">
                   <label className="font-label text-xs uppercase tracking-widest text-on-surface-variant/80 font-bold px-1" htmlFor="email">Email Corporativo</label>
-                  <input required value={formData.email} onChange={handleChange} className="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 transition-all px-4 py-4 text-on-surface placeholder-on-surface-variant/30 rounded-t-lg" id="email" placeholder="julian@empresa.com" type="email" />
+                  <input suppressHydrationWarning required value={formData.email} onChange={handleChange} className="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 transition-all px-4 py-4 text-on-surface placeholder-on-surface-variant/30 rounded-t-lg" id="email" placeholder="julian@empresa.com" type="email" />
                 </div>
               </div>
               <div className="space-y-2">
                 <label className="font-label text-xs uppercase tracking-widest text-on-surface-variant/80 font-bold px-1" htmlFor="subject">Asunto</label>
-                <input required value={formData.subject} onChange={handleChange} className="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 transition-all px-4 py-4 text-on-surface placeholder-on-surface-variant/30 rounded-t-lg" id="subject" placeholder="¿Cómo podemos ayudarle?" type="text" />
+                <input suppressHydrationWarning required value={formData.subject} onChange={handleChange} className="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 transition-all px-4 py-4 text-on-surface placeholder-on-surface-variant/30 rounded-t-lg" id="subject" placeholder="¿Cómo podemos ayudarle?" type="text" />
               </div>
               <div className="space-y-2 relative">
                 <label className="flex items-center justify-between font-label text-xs uppercase tracking-widest text-on-surface-variant/80 font-bold px-1" htmlFor="message">
                   <span>Mensaje</span>
                   <span className={`lowercase tracking-normal font-normal ${formData.message.length > 1490 ? 'text-red-500' : 'text-zinc-500'}`}>{formData.message.length}/1500</span>
                 </label>
-                <textarea required maxLength={1500} value={formData.message} onChange={handleChange} className="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 transition-all px-4 py-4 text-on-surface placeholder-on-surface-variant/30 rounded-t-lg resize-none" id="message" placeholder="Describa su proyecto o necesidad técnica..." rows={4} />
+                <textarea suppressHydrationWarning required maxLength={1500} value={formData.message} onChange={handleChange} className="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 transition-all px-4 py-4 text-on-surface placeholder-on-surface-variant/30 rounded-t-lg resize-none" id="message" placeholder="Describa su proyecto o necesidad técnica..." rows={4} />
               </div>
 
               {responseMessage && (

@@ -20,14 +20,14 @@ export default function ErgoLogia() {
                 Línea de muebles modulares para la logia, diseñada bajo parámetros ergonómicos, funcionales y estéticos, que ubica a las necesidades del ser humano en el centro.
               </p>
               <div className="mt-12 flex flex-wrap gap-4">
-                <button className="bg-primary text-black px-8 py-4 rounded-xl font-headline font-bold flex items-center gap-2 hover:shadow-lg transition-all">
+                <a href="#coreografia" className="bg-primary text-black px-8 py-4 rounded-xl font-headline font-bold flex items-center gap-2 hover:shadow-lg transition-all">
                   Coreografía de Lavandería
                   <span className="material-symbols-outlined">arrow_downward</span>
-                </button>
-                <button className="bg-primary text-black px-8 py-4 rounded-xl font-headline font-bold flex items-center gap-2 hover:shadow-lg transition-all">
+                </a>
+                <a href="#modulos" className="bg-primary text-black px-8 py-4 rounded-xl font-headline font-bold flex items-center gap-2 hover:shadow-lg transition-all">
                   Explorar Módulos
                   <span className="material-symbols-outlined">arrow_downward</span>
-                </button>
+                </a>
               </div>
             </div>
             <div className="lg:col-span-5 relative">
@@ -47,8 +47,8 @@ export default function ErgoLogia() {
           </div>
         </section>
         {/* Components Grid (Bento Style) */}
-        <section className="bg-surface-container-low px-8 py-24">
-          <div className="max-w-6xl mx-auto px-8">
+        <section id="coreografia" className="bg-surface-container-low px-8 py-24">
+          <div className="max-w-7xl mx-auto px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
                 <h2 className="font-headline text-3xl font-bold mb-8">Coreografía de Lavandería</h2>
@@ -73,7 +73,7 @@ export default function ErgoLogia() {
           </div>
         </section>
         {/* Galería de Detalles: Asymmetrical Layout */}
-        <section className="px-8 py-24 max-w-7xl mx-auto">
+        <section id="modulos" className="px-8 py-24 max-w-7xl mx-auto">
           <div className="max-w-2xl">
             <h2 className="font-headline text-4xl font-bold mb-6">Módulos</h2>
           </div>
