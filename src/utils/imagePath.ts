@@ -8,7 +8,7 @@
 export function getImageUrl(path: string): string {
   // Grab the image host from environment variables.
   // This will be http://localhost:3000 locally, and your live domain in production
-  const host = process.env.NEXT_PUBLIC_IMAGE_HOST || '';
+  const host = process.env.NEXT_PUBLIC_IMAGE_HOST || 'https://lavenderblush-mongoose-742328.hostingersite.com';
 
   if (!path) return '';
 

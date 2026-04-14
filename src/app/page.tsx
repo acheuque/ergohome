@@ -12,8 +12,8 @@ export default function Inicio() {
           <div className="absolute inset-0 technical-grid pointer-events-none" />
           <div className="max-w-screen-2xl mx-auto px-8 w-full gap-12 items-center">
             <div className="z-10 text-white flex flex-col justify-center">
-              <img alt="Ergohome" className="w-full md:w-1/2 lg:w-1/3 mb-10" data-alt="Ergohome" src={getImageUrl("/images/HOME_web/Ergohome_Logo_Amarillo_Blanco-640.png")} />
-              <p className="text-white/90 pl-12 pt-35 text-xl max-w-2xl mb-10 leading-relaxed">
+              <img alt="Ergohome" className="w-full md:w-1/2 lg:w-1/3 mb-10 ml-[-35px]" data-alt="Ergohome" src={getImageUrl("/images/HOME_web/Ergohome_Logo_Amarillo_Blanco-640.png")} />
+              <p className="text-white/90 pt-35 text-xl max-w-2xl mb-10 leading-relaxed">
                 Tu familia merece un hogar que se adapte a sus necesidades, creamos espacios ergonómicos y funcionales que facilitan las tareas cotidianas.
               </p>
 
@@ -139,7 +139,7 @@ export default function Inicio() {
               <div className="relative grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <div className="rounded-xl overflow-hidden aspect-[3/4] shadow-lg">
-                    <img alt="Ergonomic storage solutions" className="w-full h-full object-cover" style={{ objectPosition: '-50px center' }} data-alt="Ergo-logía" src={getImageUrl("/images/HOME_web/Proyectos_Ergologia_Portada.jpg")} />
+                    <img alt="Soluciones de almacenamiento ergonómicas" className="w-full h-full object-cover" style={{ objectPosition: '-50px center' }} data-alt="Ergo-logía" src={getImageUrl("/images/HOME_web/Proyectos_Ergologia_Portada.jpg")} />
                   </div>
                   <div className="bg-primary-container p-6 rounded-xl aspect-square flex flex-col justify-end">
                     <span className="font-label text-2xl font-bold text-on-primary-container mb-2">Diseño funcional, vida familiar plena</span>
@@ -157,7 +157,7 @@ export default function Inicio() {
                     </div>
                   </div>
                   <div className="rounded-xl overflow-hidden aspect-[3/4] shadow-lg">
-                    <img alt="Technical modern kitchen" className="w-full h-full object-cover" style={{ objectPosition: '-130px center' }} src={getImageUrl("/images/PROYECTOS_web/COCINAS/Proyectos_Cocinas_SuperficiedeTrabajo_01-640.jpg")} />
+                    <img className="w-full h-full object-cover" style={{ objectPosition: '-130px center' }} src={getImageUrl("/images/PROYECTOS_web/COCINAS/Proyectos_Cocinas_SuperficiedeTrabajo_01-640.jpg")} />
                   </div>
                 </div>
               </div>

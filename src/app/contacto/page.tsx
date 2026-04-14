@@ -100,7 +100,7 @@ export default function Contacto() {
           <div className="lg:col-span-5 space-y-12">
             <header>
               <span className="font-label text-primary font-semibold tracking-widest uppercase text-xs mb-4 block">Hablemos</span>
-              <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter leading-none mb-6">Diseño que cuida tu vida.</h1>
+              <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter leading-none mb-6">Diseño que cuida tu vida</h1>
               <p className="text-on-surface-variant text-lg leading-relaxed max-w-md">
                 Estamos listos para transformar tu espacio a través de la ergonomía y el diseño personalizado. Contáctanos para una asesoría.
               </p>

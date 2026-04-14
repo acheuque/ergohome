@@ -17,8 +17,8 @@ export default function Footer() {
         </div>
         <div className="flex flex-col">
           <h4 className="font-headline font-bold text-zinc-800 dark:text-zinc-200 text-sm mb-2">Redes</h4>
-          <a className="text-zinc-500 dark:text-zinc-500 hover:text-orange-500 transition-colors font-body text-sm hover:underline decoration-orange-500 underline-offset-4" href="#">Instagram</a>
-          <a className="text-zinc-500 dark:text-zinc-500 hover:text-orange-500 transition-colors font-body text-sm hover:underline decoration-orange-500 underline-offset-4" href="#">LinkedIn</a>
+          <a className="text-zinc-500 dark:text-zinc-500 hover:text-orange-500 transition-colors font-body text-sm hover:underline decoration-orange-500 underline-offset-4" href="https://www.instagram.com/ergohome_proyectos/">Instagram</a>
+          {/*<a className="text-zinc-500 dark:text-zinc-500 hover:text-orange-500 transition-colors font-body text-sm hover:underline decoration-orange-500 underline-offset-4" href="#">LinkedIn</a>*/}
         </div>
       </div>
       <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-screen-2xl mx-auto">

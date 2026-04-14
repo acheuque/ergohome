@@ -32,7 +32,7 @@ export default function ErgoLogia() {
             </div>
             <div className="lg:col-span-5 relative">
               <div className="aspect-square bg-surface-container-low rounded-2xl overflow-hidden shadow-2xl relative">
-                <img alt="Modular Laundry System" className="w-full h-full object-cover" data-alt="Modern minimalist laundry room modular cabinets" src={getImageUrl("/images/HOME_web/Proyectos_Ergologia_Portada.jpg")} />
+                <img alt="Sistema de lavandería modular" className="w-full h-full object-cover" data-alt="Armarios modulares minimalistas modernos para sala de lavandería" src={getImageUrl("/images/HOME_web/Proyectos_Ergologia_Portada.jpg")} />
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent" />
               </div>
               {/* Overlapping Technical Chip */}
@@ -79,41 +79,41 @@ export default function ErgoLogia() {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="overflow-hidden rounded-2xl">
-              <img className="w-full h-full object-cover" data-alt="Wide shot of a completed laundry room project" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_01.jpg")} />
+              <img className="w-full h-full object-cover" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_01.jpg")} />
             </div>
             <div className="overflow-hidden rounded-2xl">
-              <img className="w-full h-full object-cover" data-alt="Wide shot of a completed laundry room project" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_02.jpg")} />
+              <img className="w-full h-full object-cover" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_02.jpg")} />
             </div>
             <div className="overflow-hidden rounded-2xl">
-              <img className="w-full h-full object-cover" data-alt="Wide shot of a completed laundry room project" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_03.jpg")} />
+              <img className="w-full h-full object-cover" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_03.jpg")} />
             </div>
             <div className="overflow-hidden rounded-2xl">
-              <img className="w-full h-full object-cover" data-alt="Wide shot of a completed laundry room project" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_04.jpg")} />
+              <img className="w-full h-full object-cover" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_04.jpg")} />
             </div>
             <div className="overflow-hidden rounded-2xl">
-              <img className="w-full h-full object-cover" data-alt="Wide shot of a completed laundry room project" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_05.jpg")} />
+              <img className="w-full h-full object-cover" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_05.jpg")} />
             </div>
             <div className="overflow-hidden rounded-2xl">
-              <img className="w-full h-full object-cover" data-alt="Wide shot of a completed laundry room project" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_06.jpg")} />
+              <img className="w-full h-full object-cover" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_06.jpg")} />
             </div>
             <div className="overflow-hidden rounded-2xl">
-              <img className="w-full h-full object-cover" data-alt="Wide shot of a completed laundry room project" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_07.jpg")} />
+              <img className="w-full h-full object-cover" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_07.jpg")} />
             </div>
             <div className="overflow-hidden rounded-2xl">
-              <img className="w-full h-full object-cover" data-alt="Wide shot of a completed laundry room project" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_08.jpg")} />
+              <img className="w-full h-full object-cover" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_08.jpg")} />
             </div>
             <div className="overflow-hidden rounded-2xl">
-              <img className="w-full h-full object-cover" data-alt="Wide shot of a completed laundry room project" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_09.jpg")} />
+              <img className="w-full h-full object-cover" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_09.jpg")} />
             </div>
             <div className="overflow-hidden rounded-2xl">
-              <img className="w-full h-full object-cover" data-alt="Wide shot of a completed laundry room project" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_10.jpg")} />
+              <img className="w-full h-full object-cover" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_10.jpg")} />
             </div>
             <div className="overflow-hidden rounded-2xl">
-              <img className="w-full h-full object-cover" data-alt="Wide shot of a completed laundry room project" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_11.jpg")} />
+              <img className="w-full h-full object-cover" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_11.jpg")} />
             </div>
           </div>
           <div className="overflow-hidden rounded-2xl mt-8">
-            <img className="w-full h-full object-cover" data-alt="Wide shot of a completed laundry room project" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_Todos_texto.jpg")} />
+            <img className="w-full h-full object-cover" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_Todos_texto.jpg")} />
           </div>
 
 

@@ -41,7 +41,7 @@ export default function ProjectCarousel({ mainImage, images, aspectClass }: Proj
         >
           <img 
             src={getImageUrl(img.src)} 
-            alt={img.description || 'Project Image'} 
+            alt={img.description || 'Imagen del proyecto'} 
             className="w-full h-full object-cover transition-transform duration-700 group-hover/carousel:scale-105" 
           />
           {/* Overlay description for carousel specific images */}

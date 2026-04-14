@@ -12,7 +12,7 @@ export default function Nosotros() {
           <div className="max-w-3xl">
             <span className="font-label text-primary uppercase tracking-widest text-xs font-bold mb-4 block">Nuestro Equipo</span>
             <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface mb-8 leading-[1.1]">
-              Ergonomía y Diseño <br /><span className="text-primary italic">para la vida moderna.</span>
+              Ergonomía y Diseño <br /><span className="text-primary italic">para la vida cotidiana</span>
             </h1>
             {/* <p className="text-lg text-secondary leading-relaxed max-w-xl">
               Combinamos la precisión de la ergonómica con la calidez del diseño residencial para crear espacios que cuidan de ti.
@@ -93,7 +93,7 @@ export default function Nosotros() {
             </div>
             <div className="lg:col-span-5 lg:order-2 order-1 relative">
               <div className="aspect-[4/5] bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
-                <img alt="Catalina Maria Perez Vergara" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="Professional portrait of Catalina Maria, Designer at Ergohome" src={getImageUrl("/images/EQUIPO_web/Equipo_Presentacion_Catalina-640.jpg")} />
+                <img alt="Catalina Maria Perez Vergara" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="Retrato de Catalina Maria Perez Vergara, Diseñadora en Ergohome" src={getImageUrl("/images/EQUIPO_web/Equipo_Presentacion_Catalina-640.jpg")} />
               </div>
               {/* Ergología Modular Hint */}
               <div className="absolute -top-6 -left-6 bg-primary-container p-4 rounded-xl shadow-lg border-2 border-white max-w-[180px]">
@@ -109,32 +109,23 @@ export default function Nosotros() {
         {/* Values Section - Bento Grid */}
         <section className="max-w-7xl mx-auto px-8 mt-48">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-surface-container-low p-10 rounded-xl md:col-span-2">
-              <span className="material-symbols-outlined text-primary mb-6 text-4xl">workspace_premium</span>
-              <h3 className="font-headline text-2xl font-bold mb-4">Excelencia Técnica</h3>
-              <p className="text-secondary leading-relaxed">No solo diseñamos muebles; calculamos ángulos, puntos de presión y flujos de movimiento para garantizar que su cuerpo se mantenga en equilibrio óptimo durante todo el día.</p>
-            </div>
-            <div className="bg-primary-container p-10 rounded-xl text-on-primary-container">
-              <h3 className="font-headline text-2xl font-bold mb-4">Filosofía Ergología</h3>
-              <p className="text-sm opacity-90 leading-relaxed mb-6">Nuestro sistema modular propio permite que el diseño crezca y se adapte con usted.</p>
-              <button className="bg-background-dark text-primary px-4 py-2 rounded-lg font-label text-xs font-bold uppercase tracking-wider hover:opacity-90 transition-opacity">Ver Método</button>
-            </div>
-            <div className="bg-white p-10 rounded-xl shadow-sm border border-outline-variant/10">
-              <h3 className="font-headline text-2xl font-bold mb-4">Inclusión Real</h3>
-              <p className="text-secondary text-sm leading-relaxed">Creamos para todos. La ergonomía no es un lujo, es una necesidad fundamental de bienestar humano.</p>
-            </div>
             <div className="bg-surface-container-lowest p-10 rounded-xl shadow-sm border border-outline-variant/10 md:col-span-2 flex flex-col justify-center">
               <div className="flex items-center gap-12">
                 <div className="hidden sm:block">
-                  <div className="w-24 h-24 rounded-full border-2 border-primary border-dashed animate-spin-slow flex items-center justify-center">
-                    <span className="material-symbols-outlined text-primary">diversity_3</span>
+                  <div className="w-24 h-24 rounded-full border-2 border-primary border-dashed flex items-center justify-center">
+                    <span className="material-symbols-outlined text-primary text-6xl">diversity_3</span>
                   </div>
                 </div>
                 <div>
                   <h3 className="font-headline text-2xl font-bold mb-2">Compromiso Ergohome</h3>
-                  <p className="text-secondary leading-relaxed">Cada proyecto es una colaboración directa entre nuestro equipo técnico y sus necesidades personales.</p>
+                  <p className="text-secondary leading-relaxed">Cada proyecto es una colaboración directa entre nuestro equipo y tus necesidades personales.</p>
                 </div>
               </div>
+            </div>
+
+            <div className="bg-primary-container p-10 rounded-xl text-on-primary-container">
+              <h3 className="font-headline text-2xl font-bold mb-4">Inclusión</h3>
+              <p className="text-sm opacity-90 leading-relaxed mb-6">Diseñamos para todos. El diseño universal no es un lujo, es una necesidad fundamental para el bienestar del ser humano.</p>
             </div>
           </div>
         </section>
