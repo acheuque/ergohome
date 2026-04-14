@@ -73,3 +73,8 @@
   background-size: 32px 32px;
   opacity: 0.05;
 }
+
+/* Ocultar badge flotante de reCAPTCHA v3 ya que el texto legal está en el footer del formulario */
+.grecaptcha-badge {
+    visibility: hidden !important;
+}
