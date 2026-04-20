@@ -106,32 +106,48 @@ if ($score < 0.5) {
     exit;
 }
 
-// 6. Preparar el Email 
-$toEmail = $EROGOWORK_TO_EMAIL; // <-- CAMBIAR POR EL CORREO DONDE QUIERES RECIBIR ESTO
-$emailSubject = "NUEVO CONTACTO WEB: $subject";
+// 6. Preparar el Email con PHPMailer
+require __DIR__ . '/vendor/autoload.php';
 
-$emailBody = "Has recibido una nueva solicitud desde la página web de Ergohome:\n\n";
-$emailBody .= "======================================\n";
-$emailBody .= "Nombre Completo: $name\n";
-$emailBody .= "Email Corporativo: $email\n";
-$emailBody .= "Asunto: $subject\n";
-$emailBody .= "Mensaje:\n$message\n";
-$emailBody .= "======================================\n";
-$emailBody .= "Score de Confianza de Spam (Google): $score/1.0\n";
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-$headers = "From: webmaster@ergohome.cl\r\n"; // <-- CAMBIAR AL EMAIL ORIGEN EN HOSTINGER
-$headers .= "Reply-To: $email\r\n";
-$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+$mail = new PHPMailer(true);
 
-// 7. Enviar y retornar éxito
-$mailResult = mail($toEmail, $emailSubject, $emailBody, $headers);
+try {
+    $mail->isSMTP();
+    $mail->Host = 'smtp.hostinger.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = $EROGOHOME_SMTP_USER;
+    $mail->Password = $EROGOHOME_SMTP_PASSWORD;
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+    $mail->Port = 465;
 
-if ($mailResult) {
+    $mail->CharSet = 'UTF-8';
+    $mail->setFrom($EROGOHOME_SMTP_USER, $EROGOHOME_SMTP_NAME);
+    $mail->addAddress($EROGOWORK_TO_EMAIL);
+
+    $mail->isHTML(false);
+    $mail->Subject = "NUEVO CONTACTO WEB ERGOHOME: $subject";
+
+    $emailBody = "Has recibido una nueva solicitud desde la página web de Ergohome:\n\n";
+    $emailBody .= "======================================\n";
+    $emailBody .= "Nombre Completo: $name\n";
+    $emailBody .= "Email Corporativo: $email\n";
+    $emailBody .= "Asunto: $subject\n";
+    $emailBody .= "Mensaje:\n$message\n";
+    $emailBody .= "======================================\n";
+    $emailBody .= "Score de Confianza de Spam (Google): $score/1.0\n";
+
+    $mail->Body = $emailBody;
+
+    // 7. Enviar y retornar éxito
+    $mail->send();
     http_response_code(200);
     echo json_encode(["success" => true, "message" => "Formulario enviado exitosamente. Nos pondremos en contacto pronto."]);
 }
-else {
+catch (Exception $e) {
     http_response_code(500);
-    echo json_encode(["success" => false, "message" => "Error interno al enviar el correo. Por favor reintente más tarde."]);
+    echo json_encode(["success" => false, "message" => "Error interno al enviar el correo: {$mail->ErrorInfo}"]);
 }
 ?>
