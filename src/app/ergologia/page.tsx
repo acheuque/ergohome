@@ -35,14 +35,6 @@ export default function ErgoLogia() {
                 <img alt="Sistema de lavandería modular" className="w-full h-full object-cover" data-alt="Armarios modulares minimalistas modernos para sala de lavandería" src={getImageUrl("/images/HOME_web/Proyectos_Ergologia_Portada.jpg")} />
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent" />
               </div>
-              {/* Overlapping Technical Chip */}
-              <div className="absolute -bottom-6 -left-6 bg-surface-container-lowest p-6 rounded-xl shadow-xl border border-outline-variant/15 max-w-xs">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: '"FILL" 1' }}>conversion_path</span>
-                  <span className="font-label text-sm font-bold tracking-tight">MÉTRICA ERGO</span>
-                </div>
-                <p className="font-body text-sm text-secondary leading-snug">Precisión milimétrica adaptada a la ergonomía del movimiento humano cotidiano.</p>
-              </div>
             </div>
           </div>
         </section>

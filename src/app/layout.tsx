@@ -20,7 +20,19 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "Ergohome | Ergonomía + Diseño",
-  description: "Transformamos tu hogar a través de la ergonomía",
+  description: "Llevamos la ergonomía y el diseño de vanguardia a los espacios más importantes de tu vida cotidiana. Diseños personalizados de cocinas, lavanderías y sistemas modulares.",
+  keywords: ["Ergonomía", "Ergología", "Ergo-logía", "Diseño de Interiores", "Remodelaciones", "Cocinas", "Chile"],
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: "Ergohome | Ergonomía + Diseño",
+    description: "Llevamos la ergonomía y el diseño de vanguardia a los espacios más importantes de tu vida cotidiana. Diseños personalizados de cocinas, lavanderías y sistemas modulares.",
+    url: "https://ergohome.cl",
+    siteName: "Ergohome",
+    locale: "es_CL",
+    type: "website",
+  },
   icons: {
     icon: [
       { url: getImageUrl("/images/HOME_web/Ergohome_Logo_Negro_Limpio-500.png"), media: '(prefers-color-scheme: light)' },

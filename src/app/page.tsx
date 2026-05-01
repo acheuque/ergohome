@@ -142,7 +142,7 @@ export default function Inicio() {
                     <img alt="Soluciones de almacenamiento ergonómicas" className="w-full h-full object-cover" style={{ objectPosition: '-50px center' }} data-alt="Ergo-logía" src={getImageUrl("/images/HOME_web/Proyectos_Ergologia_Portada.jpg")} />
                   </div>
                   <div className="bg-primary-container p-6 rounded-xl aspect-square flex flex-col justify-end">
-                    <span className="font-label text-2xl font-bold text-on-primary-container mb-2">Diseño funcional, vida familiar plena</span>
+                    <span className="font-label text-lg md:text-2xl font-bold text-on-primary-container mb-2">Diseño funcional, vida familiar plena</span>
                     {/*<p className="text-on-primary-container text-xs font-bold leading-tight">Diseño funcional, vida familiar plena.</p>*/}
                   </div>
                 </div>
@@ -152,7 +152,7 @@ export default function Inicio() {
                       <span className="material-symbols-outlined text-8xl text-outline-variant/30">architecture</span>
                     </div>
                     <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                      <h6 className="font-label text-2xl font-bold text-secondary mb-2">Innovación habitacional centrada en las personas</h6>
+                      <h6 className="font-label text-lg md:text-2xl font-bold text-secondary mb-2">Innovación habitacional centrada en las personas</h6>
                       {/*<p className="text-[10px] text-secondary">Innovación habitacional centrada en las personas.</p>*/}
                     </div>
                   </div>
