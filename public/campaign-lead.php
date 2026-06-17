@@ -145,7 +145,7 @@ sendEmailSafe($internalSubject, $internalBody, $adminEmail, "Contacto Ergohome",
 // Envío a Usuario (Autoresponder)
 $userSubject = "Tu imprimible gratuito: Construye tu propia logia";
 $userBody = "Hola $name,\n\n";
-$userBody .= "Gracias por tu interés en Ergohome y nuestra línea Ergo-logía.\n\n";
+$userBody .= "Gracias por tu interés en Ergohome y nuestra línea Ergo-logia.\n\n";
 $userBody .= "Aquí tienes acceso a tu guía imprimible 'Construye tu propia logia'.\n";
 $userBody .= "Puedes descargarla en desde este enlace:\n";
 $userBody .= "https://ergohome.cl/downloads/logia_printable.pdf\n\n";

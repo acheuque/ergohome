@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="flex flex-col">
           <h4 className="font-headline font-bold text-zinc-800 dark:text-zinc-200 text-sm mb-2">Explora</h4>
           <a className="text-zinc-500 dark:text-zinc-500 hover:text-orange-500 transition-colors font-body text-sm hover:underline decoration-orange-500 underline-offset-4" href="/proyectos">Proyectos</a>
-          <a className="text-zinc-500 dark:text-zinc-500 hover:text-orange-500 transition-colors font-body text-sm hover:underline decoration-orange-500 underline-offset-4" href="/ergologia">Ergo-logía</a>
+          <a className="text-zinc-500 dark:text-zinc-500 hover:text-orange-500 transition-colors font-body text-sm hover:underline decoration-orange-500 underline-offset-4" href="/ergologia">Ergo-logia</a>
           <a className="text-zinc-500 dark:text-zinc-500 hover:text-orange-500 transition-colors font-body text-sm hover:underline decoration-orange-500 underline-offset-4" href="/nosotros">Nosotros</a>
           <a className="text-zinc-500 dark:text-zinc-500 hover:text-orange-500 transition-colors font-body text-sm hover:underline decoration-orange-500 underline-offset-4" href="/contacto">Contacto</a>
         </div>

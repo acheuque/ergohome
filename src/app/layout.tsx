@@ -22,7 +22,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Ergohome | Ergonomía + Diseño",
   description: "Llevamos la ergonomía y el diseño de vanguardia a los espacios más importantes de tu vida cotidiana. Diseños personalizados de cocinas, lavanderías y sistemas modulares.",
-  keywords: ["Ergonomía", "Ergología", "Ergo-logía", "Diseño de Interiores", "Remodelaciones", "Cocinas", "Chile"],
+  keywords: ["Ergonomía", "Ergologia", "Ergo-logia", "Diseño de Interiores", "Remodelaciones", "Cocinas", "Chile"],
   alternates: {
     canonical: '/',
   },

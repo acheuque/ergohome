@@ -114,7 +114,7 @@ export default function CampaignBlock() {
           </h2>
           <p className="text-sm md:text-base text-secondary">
             Descarga nuestra guía imprimible gratuita y descubre los secretos
-            para optimizar tu espacio de lavandería con Ergo-logía.
+            para optimizar tu espacio de lavandería con Ergo-logia.
           </p>
         </div>
 
@@ -168,7 +168,7 @@ export default function CampaignBlock() {
                 {isSubmitting ? (
                   <span className="material-symbols-outlined animate-spin text-base">progress_activity</span>
                 ) : (
-                  "Quiero mi plantilla de ergo-logía"
+                  "Quiero mi plantilla de ergo-logia"
                 )}
               </button>
               <p className="text-[10px] md:text-xs text-secondary/60 text-center">

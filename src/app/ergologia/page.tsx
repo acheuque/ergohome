@@ -21,7 +21,7 @@ export default function ErgoLogia() {
             <div className="lg:col-span-7">
               <span className="font-label text-primary font-bold tracking-widest text-xs uppercase mb-4 block">Sistema</span>
               <h1 className="text-5xl md:text-7xl font-headline font-extrabold text-on-surface leading-[1.1] tracking-tighter mb-8">
-                Ergo-logía <br /> <span className="text-outline">Sistematización del circuito de la ropa</span>
+                Ergo-logia <br /> <span className="text-outline">Sistematización del circuito de la ropa</span>
               </h1>
               <p className="text-xl md:text-2xl text-secondary leading-relaxed max-w-2xl">
                 Línea de muebles modulares para la logia, diseñada bajo parámetros ergonómicos, funcionales y estéticos, que ubica a las necesidades del ser humano en el centro.

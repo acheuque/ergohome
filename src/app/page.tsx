@@ -89,13 +89,13 @@ export default function Inicio() {
                   </span>
                 </div>
               </a>
-              {/* Ergología */}
+              {/* Ergo-logia */}
               <a href="/ergologia" className="group block bg-primary p-2 rounded-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-2 relative overflow-hidden text-background-dark">
                 <div className="relative aspect-video rounded-lg overflow-hidden mb-6">
                   <img alt="Equipamiento" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Línea de muebles modulares diseñada bajo parámetros ergonómicos." src={getImageUrl("/images/HOME_web/Proyectos_Ergologia_Portada.jpg")} />
                 </div>
                 <div className="px-6 pb-6 relative z-10">
-                  <h3 className="font-headline text-xl font-bold mb-3 text-background-dark">Ergo-logía</h3>
+                  <h3 className="font-headline text-xl font-bold mb-3 text-background-dark">Ergo-logia</h3>
                   <p className="text-sm mb-6 leading-relaxed text-background-dark/80">Línea de muebles modulares diseñada bajo parámetros ergonómicos.</p>
                   <span className="inline-flex items-center font-label text-xs font-bold uppercase tracking-widest text-background-dark group-hover:gap-2 transition-all gap-1">
                     Explorar <span className="material-symbols-outlined text-sm">trending_flat</span>
@@ -139,7 +139,7 @@ export default function Inicio() {
               <div className="relative grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <div className="rounded-xl overflow-hidden aspect-[3/4] shadow-lg">
-                    <img alt="Soluciones de almacenamiento ergonómicas" className="w-full h-full object-cover" style={{ objectPosition: '-50px center' }} data-alt="Ergo-logía" src={getImageUrl("/images/HOME_web/Proyectos_Ergologia_Portada.jpg")} />
+                    <img alt="Soluciones de almacenamiento ergonómicas" className="w-full h-full object-cover" style={{ objectPosition: '-50px center' }} data-alt="Ergo-logia" src={getImageUrl("/images/HOME_web/Proyectos_Ergologia_Portada.jpg")} />
                   </div>
                   <div className="bg-primary-container p-6 rounded-xl aspect-square flex flex-col justify-end">
                     <span className="font-label text-lg md:text-2xl font-bold text-on-primary-container mb-2">Diseño funcional, vida familiar plena</span>
