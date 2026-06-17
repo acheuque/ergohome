@@ -78,3 +78,9 @@
 .grecaptcha-badge {
   visibility: hidden !important;
 }
+
+/* Animación del reflejo para el ribbon */
+@keyframes shimmerPass {
+  0% { transform: translateX(-150%) skewX(-25deg); }
+  100% { transform: translateX(500%) skewX(-25deg); }
+}
