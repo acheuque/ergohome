@@ -21,10 +21,16 @@ $email = isset($data['email']) ? trim(filter_var($data['email'], FILTER_SANITIZE
 $utm_source = isset($data['utm_source']) ? trim(filter_var($data['utm_source'], FILTER_SANITIZE_STRING)) : '';
 $utm_medium = isset($data['utm_medium']) ? trim(filter_var($data['utm_medium'], FILTER_SANITIZE_STRING)) : '';
 $utm_campaign = isset($data['utm_campaign']) ? trim(filter_var($data['utm_campaign'], FILTER_SANITIZE_STRING)) : '';
+$utm_term = isset($data['utm_term']) ? trim(filter_var($data['utm_term'], FILTER_SANITIZE_STRING)) : '';
 $utm_content = isset($data['utm_content']) ? trim(filter_var($data['utm_content'], FILTER_SANITIZE_STRING)) : '';
 $referrer = isset($data['referrer']) ? trim(filter_var($data['referrer'], FILTER_SANITIZE_STRING)) : '';
 $landing_page = isset($data['landing_page']) ? trim(filter_var($data['landing_page'], FILTER_SANITIZE_STRING)) : '';
 $timestamp = date("Y-m-d H:i:s");
+
+// Additional Legal & Technical Analytics
+$ip_address = $_SERVER['REMOTE_ADDR'] ?? 'Desconocida';
+$user_agent = $_SERVER['HTTP_USER_AGENT'] ?? 'Desconocido';
+$consent_version = "v1.0-20260617";
 
 if (empty($name) || empty($email)) {
     http_response_code(400);
@@ -38,55 +44,82 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-// 1. Storage in CSV
-$csvFile = __DIR__ . '/data/leads_logia.csv';
-// Create dir if doesn't exist
-if (!is_dir(__DIR__ . '/data')) {
-    mkdir(__DIR__ . '/data', 0755, true);
+$recaptchaToken = isset($data['token']) ? $data['token'] : '';
+
+if (empty($recaptchaToken)) {
+    http_response_code(400);
+    echo json_encode(["success" => false, "message" => "Acción bloqueada: reCAPTCHA token faltante."]);
+    exit;
 }
+
+$gcpApiKey = isset($EROGOWORK_RECAPTCHA_SECRET_KEY) ? $EROGOWORK_RECAPTCHA_SECRET_KEY : '';
+
+if (!$gcpApiKey) {
+    http_response_code(500);
+    echo json_encode(["success" => false, "message" => "Error del servidor: Variable de clave secreta no configurada."]);
+    exit;
+}
+
+$projectId = "ergoworks";
+$siteKey = "6LdUoaUsAAAAACta8oXLlYocvXcZw_rp41Q5jSbs"; // Tu llave pública
+
+$url = "https://recaptchaenterprise.googleapis.com/v1/projects/" . urlencode($projectId) . "/assessments?key=" . urlencode($gcpApiKey);
+$postData = json_encode([
+    'event' => [
+        'token' => $recaptchaToken,
+        'siteKey' => $siteKey,
+        'expectedAction' => 'LOGIN'
+    ]
+]);
+
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+$referrerURL = isset($EROGOWORK_DOMAIN_REFERRER) ? $EROGOWORK_DOMAIN_REFERRER : '';
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Content-Type: application/json',
+    'Referer: ' . $referrerURL
+]);
+$verifyResponse = curl_exec($ch);
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+curl_close($ch);
+
+$responseData = json_decode($verifyResponse);
+
+if ($httpCode !== 200 || !isset($responseData->tokenProperties->valid) || $responseData->tokenProperties->valid !== true) {
+    http_response_code(403);
+    echo json_encode(["success" => false, "message" => "Verificación de reCAPTCHA fallida. Por favor, intenta de nuevo."]);
+    exit;
+}
+
+$score = isset($responseData->riskAnalysis->score) ? $responseData->riskAnalysis->score : 1.0;
+if ($score < 0.5) {
+    http_response_code(403);
+    echo json_encode(["success" => false, "message" => "Tu solicitud fue marcada como sospechosa de spam por nuestros sistemas."]);
+    exit;
+}
+
+// 1. Storage in CSV
+$csvFile = (isset($EROGOHOME_CAMPAIGN_CSV_PATH) && !empty($EROGOHOME_CAMPAIGN_CSV_PATH))
+    ? __DIR__ . $EROGOHOME_CAMPAIGN_CSV_PATH
+    : __DIR__ . '/data/leads_logia.csv';
+
+if (!is_dir(dirname($csvFile))) {
+    mkdir(dirname($csvFile), 0755, true);
+}
+
 // Add header if file doesn't exist
 $isNewFile = !file_exists($csvFile);
 $fileHandle = fopen($csvFile, 'a');
 if ($fileHandle) {
     if ($isNewFile) {
-        fputcsv($fileHandle, ['Timestamp', 'Name', 'Email', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'UTM Content', 'Referrer', 'Landing Page']);
+        fputcsv($fileHandle, ['Timestamp', 'Name', 'Email', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'UTM Term', 'UTM Content', 'Referrer', 'Landing Page', 'IP Address', 'User Agent', 'Consent Version', 'reCAPTCHA Score']);
     }
-    fputcsv($fileHandle, [$timestamp, $name, $email, $utm_source, $utm_medium, $utm_campaign, $utm_content, $referrer, $landing_page]);
+    fputcsv($fileHandle, [$timestamp, $name, $email, $utm_source, $utm_medium, $utm_campaign, $utm_term, $utm_content, $referrer, $landing_page, $ip_address, $user_agent, $consent_version, $score]);
     fclose($fileHandle);
 }
 
-// 2. Email Setup (Internal & Autoresponder)
-function sendEmail($subject, $body, $recipientEmail, $recipientName, $isHTML = false)
-{
-    global $EROGOHOME_SMTP_USER, $EROGOHOME_SMTP_PASSWORD, $EROGOHOME_SMTP_NAME;
-    $mail = new PHPMailer(true);
-    try {
-        $mail->isSMTP();
-        $mail->Host = 'smtp.hostinger.com';
-        $mail->SMTPAuth = true;
-        // The sender configuration is taken from the imported required files in config.php
-        $mail->Username = $EROGOHOME_SMTP_USER;
-        $mail->Password = $EROGOHOME_SMTP_PASSWORD;
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port = 465;
-
-        $mail->CharSet = 'UTF-8';
-        $mail->setFrom($EROGOHOME_SMTP_USER, $EROGOHOME_SMTP_NAME);
-        $mail->addAddress($recipientEmail, $recipientName);
-
-        $mail->isHTML($isHTML);
-        $mail->Subject = $subject;
-        $mail->Body = $body;
-
-        $mail->send();
-        return true;
-    }
-    catch (Exception $e) {
-        // En producción podemos imprimir ErrorInfo a un log seguro, por ahora retornamos falso.
-        error_log($mail->ErrorInfo);
-        return false;
-    }
-}
 
 // Require globals because they are defined in config.php mostly, but we need them inside function
 // Wait, actually, require 'config.php' is done globally. So we shouldn't use "global" inside if they are defined in config.php using standard variable declarations. 
@@ -140,21 +173,21 @@ $internalBody .= "Content: $utm_content\n";
 $internalBody .= "Referencia: $referrer\n";
 $internalBody .= "Landing Page: $landing_page\n";
 
-sendEmailSafe($internalSubject, $internalBody, $adminEmail, "Contacto Ergohome", $smtpUser, $smtpPass, $smtpName);
+// sendEmailSafe($internalSubject, $internalBody, $adminEmail, "Contacto Ergohome", $smtpUser, $smtpPass, $smtpName);
 
 // Envío a Usuario (Autoresponder)
 $userSubject = "Tu imprimible gratuito: Construye tu propia logia";
 $userBody = "Hola $name,\n\n";
 $userBody .= "Gracias por tu interés en Ergohome y nuestra línea Ergo-logia.\n\n";
 $userBody .= "Aquí tienes acceso a tu guía imprimible 'Construye tu propia logia'.\n";
-$userBody .= "Puedes descargarla en desde este enlace:\n";
-$userBody .= "https://ergohome.cl/downloads/logia_printable.pdf\n\n";
+$userBody .= "Puedes descargarla desde este enlace:\n";
+$userBody .= "https://ergohome.cl/downloads/ergo-logia-printable.pdf\n\n";
 $userBody .= "¡Esperamos que te sea de gran utilidad!\n\n";
 $userBody .= "Saludos cordiales,\n";
 $userBody .= "El equipo de Ergohome";
 
-sendEmailSafe($userSubject, $userBody, $email, $name, $smtpUser, $smtpPass, $smtpName);
+// sendEmailSafe($userSubject, $userBody, $email, $name, $smtpUser, $smtpPass, $smtpName);
 
 http_response_code(200);
-echo json_encode(["success" => true, "message" => "Lead guardado y enviado"]);
+echo json_encode(["success" => true, "message" => "Lead guardado correctamente (envío cancelado)"]);
 ?>

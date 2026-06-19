@@ -156,6 +156,19 @@ export default function Contacto() {
                 <textarea suppressHydrationWarning required maxLength={1500} value={formData.message} onChange={handleChange} className="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 transition-all px-4 py-4 text-on-surface placeholder-on-surface-variant/30 rounded-t-lg resize-none" id="message" placeholder="Describa su proyecto o necesidad técnica..." rows={4} />
               </div>
 
+              <div className="flex items-start gap-3">
+                <input 
+                  type="checkbox" 
+                  id="acceptTerms" 
+                  name="acceptTerms" 
+                  required 
+                  className="mt-1 w-4 h-4 text-primary bg-surface-container-low border-outline-variant/30 rounded focus:ring-primary focus:ring-2 accent-primary transition-all cursor-pointer flex-shrink-0" 
+                />
+                <label htmlFor="acceptTerms" className="text-xs text-on-surface-variant leading-relaxed select-none cursor-pointer">
+                  Al enviar este formulario, autorizo a Ergohome a tratar mis datos personales para responder a mi solicitud, de acuerdo con nuestra <a href="/politica-de-privacidad/" className="text-primary hover:underline font-bold transition-colors">Política de Privacidad</a>.
+                </label>
+              </div>
+
               {responseMessage && (
                 <div className={`p-4 rounded-xl text-sm font-body ${status === 'success' ? 'bg-tertiary-container text-on-tertiary-container' : 'bg-error-container text-on-error-container'}`}>
                   {responseMessage}
