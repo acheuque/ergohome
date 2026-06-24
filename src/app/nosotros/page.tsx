@@ -95,7 +95,7 @@ export default function Nosotros() {
               <div className="aspect-[4/5] bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
                 <img alt="Catalina Maria Perez Vergara" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="Retrato de Catalina Maria Perez Vergara, Diseñadora en Ergohome" src={getImageUrl("/images/EQUIPO_web/Equipo_Presentacion_Catalina-640.jpg")} />
               </div>
-              {/* Ergología Modular Hint */}
+              {/* Ergo-logia Modular Hint */}
               <div className="absolute -top-6 -left-6 bg-primary-container p-4 rounded-xl shadow-lg border-2 border-white max-w-[180px]">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="material-symbols-outlined text-on-primary-container text-lg">biotech</span>

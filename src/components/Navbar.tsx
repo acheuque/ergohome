@@ -16,7 +16,7 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Proyectos', href: '/proyectos' },
-    { name: 'Ergo-logía', href: '/ergologia' },
+    { name: 'Ergo-logia', href: '/ergologia' },
     { name: 'Nosotros', href: '/nosotros' },
     { name: 'Contacto', href: '/contacto' },
   ];

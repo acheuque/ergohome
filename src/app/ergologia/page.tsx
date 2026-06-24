@@ -1,12 +1,19 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getImageUrl } from "@/utils/imagePath";
+import CampaignBlock from "@/components/CampaignBlock";
+import { Suspense } from "react";
 
 export default function ErgoLogia() {
   return (
     <>
       <Navbar />
       <main className="pt-24">
+        {/* Campaign Block injected for Instagram traffic */}
+        <Suspense fallback={null}>
+          <CampaignBlock />
+        </Suspense>
+
         {/* Hero Section: The Technical Sanctuary */}
         <section className="relative px-8 py-20 max-w-screen-2xl mx-auto overflow-hidden">
           <div className="technical-grid absolute inset-0 opacity-20 pointer-events-none" />
@@ -14,7 +21,7 @@ export default function ErgoLogia() {
             <div className="lg:col-span-7">
               <span className="font-label text-primary font-bold tracking-widest text-xs uppercase mb-4 block">Sistema</span>
               <h1 className="text-5xl md:text-7xl font-headline font-extrabold text-on-surface leading-[1.1] tracking-tighter mb-8">
-                Ergo-logía <br /> <span className="text-outline">Sistematización del circuito de la ropa</span>
+                Ergo-logia <br /> <span className="text-outline">Sistematización del circuito de la ropa</span>
               </h1>
               <p className="text-xl md:text-2xl text-secondary leading-relaxed max-w-2xl">
                 Línea de muebles modulares para la logia, diseñada bajo parámetros ergonómicos, funcionales y estéticos, que ubica a las necesidades del ser humano en el centro.
@@ -53,7 +60,6 @@ export default function ErgoLogia() {
                         <br />Ergo-logia es una línea de muebles modulares combinables según el espacio y las necesidades incluyendo también en sus diseños principios del diseño universal.</p>
                     </div>
                   </div>
-
                 </div>
               </div>
               <div className="relative p-2 border-2 border-dashed border-outline-variant/30 rounded-xl">
@@ -107,11 +113,7 @@ export default function ErgoLogia() {
           <div className="overflow-hidden rounded-2xl mt-8">
             <img className="w-full h-full object-cover" src={getImageUrl("/images/PROYECTOS_web/ERGOLOGIA/Modulos/ErgoLogia_Modulos_Todos_texto.jpg")} />
           </div>
-
-
         </section>
-
-
       </main>
       <Footer />
     </>
